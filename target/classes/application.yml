@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+  # Optional session timeout
+
+  servlet:
+    session:
+      timeout: 30m
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL
+    username: sa
+    password: 
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+
+app:
+  jwt:
+    secret: "super-strong-256-bit-secret-change-me-please-please-please"
+    expiry: 3600000  # 1h in ms
+
+
+

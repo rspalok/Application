@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head><meta charset="UTF-8" /><title>Dashboard</title></head>
+<body>
+<h2>Dashboard</h2>
+
+<!-- From session -->
+<div th:if="${currentUser != null}">
+    <p>Welcome, <span th:text="${currentUser.firstName} ?: ${currentUser.username}"></span>!</p>
+    <p>Email: <span th:text="${currentUser.email}"></span></p>
+    <p>Role: <span th:text="${currentUser.role}"></span></p>
+</div>
+
+<!-- From Spring Security principal -->
+<div sec:authorize="isAuthenticated()">
+    <p>Authenticated as: <span sec:authentication="name"></span></p>
+    <p>Authorities: <span sec:authentication="authorities"></span></p>
+</div>
+
+@{/logout}
+    <button type="submit">Logout</button>
+</form>
+</body>
+</html>
